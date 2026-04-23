@@ -1,0 +1,1531 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="cabecalho">
+  <div class="cabecalho-titulos">
+    <h2>FORMULÁRIO NACIONAL DE AVAILIAÇÃO DE RISCO</h2>
+    <h3>FONAR DIGITAL</h3>
+  </div>
+</div>
+
+<style>
+
+body{
+  font-family: Arial;
+  background:#111;
+  padding:20px;
+  margin:0;
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+h2{
+  color:#fff;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+/* ===== BARRA DE TÍTULO DOS BLOCOS ===== */
+.titulo{
+  background:#000;
+  color:#fff;
+  padding:12px;
+  border-left:6px solid #c2a86c;
+  border-radius:6px;
+  margin-top:25px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#bca36a;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-shadow:0 0 6px rgba(0,0,0,0.22);
+}
+
+/* ===== PERGUNTA ===== */
+.pergunta{
+  background:#d0ba84;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:12px;
+  border-left:4px solid #000;
+  border-bottom:1px solid #000;
+}
+
+/* ===== TÍTULO DA PERGUNTA ===== */
+.pergunta-titulo{
+  font-weight:bold;
+  display:block;
+  margin-bottom:6px;
+  font-size:14px;
+  letter-spacing:0.3px;
+  color:#000;
+  background:rgba(0,0,0,0.08);
+  padding:6px 8px;
+  border-radius:4px;
+  border-left:3px solid #000;
+}
+
+/* ===== OPÇÕES ===== */
+.opcoes{
+  margin-top:5px;
+  border-top:1px solid #000;
+}
+
+.opcoes label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:0;
+  font-weight:normal;
+  font-size:13px;
+  cursor:pointer;
+  padding:7px 8px;
+  border-bottom:1px solid #000;
+  background:rgba(0,0,0,0.03);
+  border:1px solid #8a8a8a;
+  border-radius:4px;
+  margin-top:2px;
+  box-shadow:none;
+  transition:transform .06s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+}
+
+.opcoes label:last-child{
+  border-bottom:none;
+}
+
+.opcoes label:active{
+  transform:translateY(1px);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.25);
+  background:rgba(0,0,0,0.08);
+  border-color:#666;
+}
+
+.opcoes label:has(input:checked){
+  background:rgba(0,0,0,0.1);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.28);
+  border-color:#5b5b5b;
+}
+
+.opcoes input[type="radio"],
+.opcoes input[type="checkbox"]{
+  accent-color:#111;
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+}
+
+/* ===== INPUT ===== */
+input, textarea{
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+  border-radius:6px;
+  border:1px solid #999;
+  background:#fff;
+  text-transform:uppercase;
+}
+
+/* ===== BOTÕES BASE ===== */
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.aviso{
+  background:#d8c18b;
+  border-left:6px solid #c2a86c;
+  border-radius:8px;
+  padding:14px;
+  margin:0 0 18px 0;
+  color:#111;
+  line-height:1.45;
+}
+
+.cabecalho{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.cabecalho-titulos{
+  flex:1;
+  text-align:center;
+}
+
+.cabecalho h3{
+  color:#c2a86c;
+}
+
+.aviso p{
+  margin:0 0 10px 0;
+}
+
+.aviso p:last-child{
+  margin-bottom:0;
+}
+
+/* ===== BOTÃO ENVIAR (PRETO) ===== */
+.btn-enviar{
+  width:100%;
+  padding:16px;
+  background:#000;
+  color:#fff;
+  font-weight:bold;
+  text-transform:uppercase;
+  border:2px solid #c2a86c;
+  border-radius:10px;
+  margin-top:20px;
+  cursor:pointer;
+  box-shadow:0 0 0 4px rgba(194,168,108,0.5);
+}
+
+.acoes{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.btn2{
+  flex:1;
+  background:#16a34a;
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+}
+
+.btn3{
+  flex:1;
+  background:#dc2626;
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+}
+
+#saida_historico{
+  height:200px;
+  font-family:monospace;
+}
+
+
+/* ===== HISTÓRICO ===== */
+#saida_historico{
+  height:180px;
+  background:#fff;
+  font-family:monospace;
+}
+
+/* ===== RESULTADO ===== */
+#resultado{
+  margin-top:20px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px){
+  body{
+    padding:10px;
+  }
+
+  h2{
+    font-size:20px;
+    margin-bottom:12px;
+  }
+
+  h3{
+    font-size:14px;
+    margin:0;
+  }
+
+  .cabecalho{
+    gap:6px;
+    margin-bottom:12px;
+  }
+
+  .titulo{
+    padding:10px;
+    margin-top:16px;
+    border-left-width:4px;
+    font-size:13px;
+  }
+
+  .card{
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:8px;
+    box-shadow:none;
+  }
+
+  .aviso{
+    padding:10px;
+    margin-bottom:12px;
+    border-left-width:4px;
+    font-size:13px;
+    line-height:1.35;
+  }
+
+  .pergunta{
+    padding:10px;
+    margin-bottom:10px;
+    border-left-width:3px;
+  }
+
+  .pergunta-titulo{
+    font-size:13px;
+    line-height:1.3;
+    padding:5px 7px;
+  }
+
+  .opcoes label{
+    margin-left:0;
+    font-size:13px;
+    line-height:1.35;
+    padding:2px 0;
+  }
+
+  input, textarea{
+    padding:10px;
+    font-size:14px;
+  }
+
+  #saida_historico{
+    min-height:140px;
+    height:28vh;
+    max-height:260px;
+  }
+
+  .btn-enviar{
+    padding:14px;
+    margin-top:14px;
+    border-radius:8px;
+  }
+
+  .acoes{
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .btn2, .btn3{
+    width:100%;
+  }
+}
+
+</style>
+
+<div class="aviso">
+  <p><strong>Prezado(a) Policial Militar,</strong></p>
+  <p>Este link tem por finalidade auxiliar no preenchimento do Formulário Nacional de Avaliação de Risco, contemplando todas as informações necessárias.</p>
+  <p>Ao final do preenchimento e envio das respostas, será disponibilizado um campo contendo um modelo de histórico, que poderá ser utilizado no REDS, inclusive com a complementação de informações eventualmente já registradas no FONAR.</p>
+  <p>Ressalta-se a necessidade de adequar o conteúdo às especificidades de cada caso.</p>
+</div>
+
+<div class="titulo">1 - IDENTIFICAÇÃO DA VÍTIMA</div>
+<div class="card">
+
+<!-- NOME -->
+<div class="pergunta">
+<label class="pergunta-titulo">NOME DA VÍTIMA</label>
+<input id="vitima_nome">
+</div>
+
+<!-- IDADE -->
+<div class="pergunta">
+<label class="pergunta-titulo">IDADE</label>
+<input id="vitima_idade">
+</div>
+
+<!-- ESTADO CIVIL -->
+<div class="pergunta">
+<label class="pergunta-titulo">ESTADO CIVIL</label>
+<div class="opcoes">
+<label><input type="radio" name="estado_vitima" value="SOLTEIRA"> SOLTEIRA</label>
+<label><input type="radio" name="estado_vitima" value="CASADA"> CASADA</label>
+<label><input type="radio" name="estado_vitima" value="DIVORCIADA"> DIVORCIADA</label>
+<label><input type="radio" name="estado_vitima" value="SEPARADA JUDICIALMENTE"> SEPARADA JUDICIALMENTE</label>
+<label><input type="radio" name="estado_vitima" value="VIUVA"> VIÚVA</label>
+<label><input type="radio" name="estado_vitima" value="UNIAO ESTAVEL"> UNIÃO ESTÁVEL</label>
+</div>
+</div>
+
+<!-- ESCOLARIDADE -->
+<div class="pergunta">
+<label class="pergunta-titulo">ESCOLARIDADE</label>
+<div class="opcoes">
+<label><input type="radio" name="esc_vitima" value="ANALFABETA"> ANALFABETA</label>
+<label><input type="radio" name="esc_vitima" value="ALFABETIZADA"> ALFABETIZADA</label>
+<label><input type="radio" name="esc_vitima" value="FUNDAMENTAL INCOMPLETO"> FUNDAMENTAL INCOMPLETO</label>
+<label><input type="radio" name="esc_vitima" value="FUNDAMENTAL COMPLETO"> FUNDAMENTAL COMPLETO</label>
+<label><input type="radio" name="esc_vitima" value="MEDIO INCOMPLETO"> MÉDIO INCOMPLETO</label>
+<label><input type="radio" name="esc_vitima" value="MEDIO COMPLETO"> MÉDIO COMPLETO</label>
+<label><input type="radio" name="esc_vitima" value="SUPERIOR INCOMPLETO"> SUPERIOR INCOMPLETO</label>
+<label><input type="radio" name="esc_vitima" value="SUPERIOR COMPLETO"> SUPERIOR COMPLETO</label>
+<label><input type="radio" name="esc_vitima" value="POS GRADUACAO"> PÓS-GRADUAÇÃO</label>
+</div>
+</div>
+
+<!-- NACIONALIDADE -->
+<div class="pergunta">
+<label class="pergunta-titulo">NACIONALIDADE</label>
+<div class="opcoes">
+<label><input type="radio" name="nac_vitima" value="BRASILEIRA"> BRASILEIRA</label>
+<label><input type="radio" name="nac_vitima" value="ESTRANGEIRA"> ESTRANGEIRA</label>
+</div>
+<input id="pais_vitima" placeholder="PAÍS">
+</div>
+
+<!-- TELEFONES -->
+<div class="pergunta">
+<label class="pergunta-titulo">TELEFONE 1</label>
+<input id="tel1_vitima" inputmode="numeric" maxlength="15" placeholder="(31) 91234-5678">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">TELEFONE 2</label>
+<input id="tel2_vitima" inputmode="numeric" maxlength="15" placeholder="(31) 91234-5678">
+</div>
+
+<!-- PM -->
+<div class="pergunta">
+<label class="pergunta-titulo">É POLICIAL MILITAR?</label>
+<div class="opcoes">
+<label><input type="radio" name="pm_vitima" value="NAO"> NÃO</label>
+<label><input type="radio" name="pm_vitima" value="SIM"> SIM</label>
+</div>
+<input id="unidade_vitima" placeholder="UNIDADE">
+</div>
+
+<!-- PROFISSÃO -->
+<div class="pergunta">
+<label class="pergunta-titulo">PROFISSÃO</label>
+<input id="prof_vitima">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">HORÁRIO DE TRABALHO</label>
+<input id="horario_vitima">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">ENDEREÇO PROFISSIONAL</label>
+<input id="endereco_prof_vitima">
+</div>
+
+<!-- COR -->
+<div class="pergunta">
+<label class="pergunta-titulo">COR/RAÇA</label>
+<div class="opcoes">
+<label><input type="radio" name="cor_vitima" value="BRANCA"> BRANCA</label>
+<label><input type="radio" name="cor_vitima" value="PRETA"> PRETA</label>
+<label><input type="radio" name="cor_vitima" value="PARDA"> PARDA</label>
+<label><input type="radio" name="cor_vitima" value="AMARELA"> AMARELA</label>
+<label><input type="radio" name="cor_vitima" value="INDIGENA"> INDÍGENA</label>
+<label><input type="radio" name="cor_vitima" value="ORIENTAL"> ORIENTAL</label>
+</div>
+</div>
+
+<!-- EMAIL / CPF -->
+<div class="pergunta">
+<label class="pergunta-titulo">EMAIL</label>
+<input id="email_vitima">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">CPF</label>
+<input id="cpf_vitima" inputmode="numeric" maxlength="14" placeholder="123.456.789-10">
+</div>
+
+<!-- RELAÇÃO -->
+<div class="pergunta">
+<label class="pergunta-titulo">RELAÇÃO COM O AUTOR</label>
+<div class="opcoes">
+<label><input type="radio" name="relacao" value="CONJUGE"> CÔNJUGE</label>
+<label><input type="radio" name="relacao" value="COMPANHEIRO"> COMPANHEIRO(A)</label>
+<label><input type="radio" name="relacao" value="EX CONJUGE"> EX-CÔNJUGE</label>
+<label><input type="radio" name="relacao" value="EX COMPANHEIRO"> EX-COMPANHEIRO(A)</label>
+<label><input type="radio" name="relacao" value="NAMORADO"> NAMORADO(A)</label>
+<label><input type="radio" name="relacao" value="EX NAMORADO"> EX-NAMORADO(A)</label>
+<label><input type="radio" name="relacao" value="CASO"> CASO</label>
+<label><input type="radio" name="relacao" value="EXTRACONJUGAL"> RELAÇÃO EXTRACONJUGAL</label>
+</div>
+</div>
+
+</div>
+
+<div class="titulo">2 - IDENTIFICAÇÃO DO AGRESSOR</div>
+<div class="card">
+
+<!-- NOME -->
+<div class="pergunta">
+<label class="pergunta-titulo">NOME DO AGRESSOR</label>
+<input id="autor_nome">
+</div>
+
+<!-- IDADE -->
+<div class="pergunta">
+<label class="pergunta-titulo">IDADE</label>
+<input id="autor_idade">
+</div>
+
+<!-- ESTADO CIVIL -->
+<div class="pergunta">
+<label class="pergunta-titulo">ESTADO CIVIL</label>
+<div class="opcoes">
+<label><input type="radio" name="estado_autor" value="SOLTEIRO"> SOLTEIRO(A)</label>
+<label><input type="radio" name="estado_autor" value="CASADO"> CASADO(A)</label>
+<label><input type="radio" name="estado_autor" value="UNIAO ESTAVEL"> UNIÃO ESTÁVEL</label>
+<label><input type="radio" name="estado_autor" value="DIVORCIADO"> DIVORCIADO(A)</label>
+<label><input type="radio" name="estado_autor" value="SEPARADO JUDICIALMENTE"> SEPARADO(A) JUDICIALMENTE</label>
+<label><input type="radio" name="estado_autor" value="VIUVO"> VIÚVO(A)</label>
+</div>
+</div>
+
+<!-- ESCOLARIDADE -->
+<div class="pergunta">
+<label class="pergunta-titulo">ESCOLARIDADE</label>
+<div class="opcoes">
+<label><input type="radio" name="esc_autor" value="ANALFABETO"> ANALFABETO(A)</label>
+<label><input type="radio" name="esc_autor" value="ALFABETIZADO"> ALFABETIZADO(A)</label>
+<label><input type="radio" name="esc_autor" value="FUNDAMENTAL INCOMPLETO"> FUNDAMENTAL INCOMPLETO</label>
+<label><input type="radio" name="esc_autor" value="FUNDAMENTAL COMPLETO"> FUNDAMENTAL COMPLETO</label>
+<label><input type="radio" name="esc_autor" value="MEDIO INCOMPLETO"> MÉDIO INCOMPLETO</label>
+<label><input type="radio" name="esc_autor" value="MEDIO COMPLETO"> MÉDIO COMPLETO</label>
+<label><input type="radio" name="esc_autor" value="SUPERIOR INCOMPLETO"> SUPERIOR INCOMPLETO</label>
+<label><input type="radio" name="esc_autor" value="SUPERIOR COMPLETO"> SUPERIOR COMPLETO</label>
+<label><input type="radio" name="esc_autor" value="POS GRADUACAO"> PÓS-GRADUAÇÃO</label>
+</div>
+</div>
+
+<!-- NACIONALIDADE -->
+<div class="pergunta">
+<label class="pergunta-titulo">NACIONALIDADE</label>
+<div class="opcoes">
+<label><input type="radio" name="nac_autor" value="BRASILEIRO"> BRASILEIRO(A)</label>
+<label><input type="radio" name="nac_autor" value="ESTRANGEIRO"> ESTRANGEIRO(A)</label>
+</div>
+<input id="pais_autor" placeholder="PAÍS">
+</div>
+
+<!-- TELEFONES -->
+<div class="pergunta">
+<label class="pergunta-titulo">TELEFONE 1</label>
+<input id="tel1_autor" inputmode="numeric" maxlength="15" placeholder="(31) 91234-5678">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">TELEFONE 2</label>
+<input id="tel2_autor" inputmode="numeric" maxlength="15" placeholder="(31) 91234-5678">
+</div>
+
+<!-- PM -->
+<div class="pergunta">
+<label class="pergunta-titulo">É POLICIAL MILITAR?</label>
+<div class="opcoes">
+<label><input type="radio" name="pm_autor" value="NAO"> NÃO</label>
+<label><input type="radio" name="pm_autor" value="SIM"> SIM</label>
+</div>
+<input id="unidade_autor" placeholder="UNIDADE">
+</div>
+
+<!-- PROFISSÃO -->
+<div class="pergunta">
+<label class="pergunta-titulo">PROFISSÃO</label>
+<input id="prof_autor">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">HORÁRIO DE TRABALHO</label>
+<input id="horario_autor">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">ENDEREÇO PROFISSIONAL</label>
+<input id="endereco_prof_autor">
+</div>
+
+<!-- COR -->
+<div class="pergunta">
+<label class="pergunta-titulo">COR/RAÇA</label>
+<div class="opcoes">
+<label><input type="radio" name="cor_autor" value="BRANCO"> BRANCO(A)</label>
+<label><input type="radio" name="cor_autor" value="PRETO"> PRETO(A)</label>
+<label><input type="radio" name="cor_autor" value="PARDO"> PARDO(A)</label>
+<label><input type="radio" name="cor_autor" value="AMARELO"> AMARELO(A)</label>
+<label><input type="radio" name="cor_autor" value="INDIGENA"> INDÍGENA</label>
+<label><input type="radio" name="cor_autor" value="ORIENTAL"> ORIENTAL</label>
+</div>
+</div>
+
+<!-- EMAIL / CPF -->
+<div class="pergunta">
+<label class="pergunta-titulo">EMAIL</label>
+<input id="email_autor">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">CPF</label>
+<input id="cpf_autor" inputmode="numeric" maxlength="14" placeholder="123.456.789-10">
+</div>
+
+<!-- ANTECEDENTES -->
+<div class="pergunta">
+<label class="pergunta-titulo">POSSUI ANTECEDENTES CRIMINAIS?</label>
+<div class="opcoes">
+<label><input type="radio" name="antecedente" value="NAO POSSUI"> NÃO</label>
+<label><input type="radio" name="antecedente" value="POSSUI"> SIM</label>
+</div>
+<input id="antecedente_desc" placeholder="QUAIS">
+</div>
+
+</div>
+
+<div class="titulo">3 - INFORMAÇÕES SOBRE A SITUAÇÃO ATUAL ENTRE AS PARTES</div>
+<div class="card">
+
+<!-- TEMPO DE RELACIONAMENTO -->
+<div class="pergunta">
+<label class="pergunta-titulo">TEMPO DE RELACIONAMENTO</label>
+<input id="tempo_relacionamento">
+</div>
+
+<!-- ESTÃO SEPARADOS -->
+<div class="pergunta">
+<label class="pergunta-titulo">ESTÃO SEPARADOS?</label>
+<div class="opcoes">
+<label><input type="radio" name="separados" value="NAO"> NÃO</label>
+<label><input type="radio" name="separados" value="SIM"> SIM</label>
+</div>
+<input id="tempo_separacao" placeholder="HÁ QUANTO TEMPO">
+</div>
+
+<!-- TEMPO DE VIOLÊNCIA -->
+<div class="pergunta">
+<label class="pergunta-titulo">HÁ QUANTO TEMPO OCORRE VIOLÊNCIA NO RELACIONAMENTO</label>
+<input id="tempo_violencia">
+</div>
+
+<!-- MPU -->
+<div class="pergunta">
+<label class="pergunta-titulo">POSSUI MEDIDA PROTETIVA DE URGÊNCIA (MPU)?</label>
+<div class="opcoes">
+<label><input type="radio" name="mpu_situacao" value="SIM"> SIM</label>
+<label><input type="radio" name="mpu_situacao" value="NAO"> NÃO</label>
+<label><input type="radio" name="mpu_situacao" value="SOLICITOU"> SOLICITOU</label>
+</div>
+</div>
+
+<!-- INTIMAÇÃO DA VÍTIMA -->
+<div class="pergunta">
+<label class="pergunta-titulo">INTIMAÇÃO DA VÍTIMA</label>
+<div class="opcoes">
+<label><input type="radio" name="intimacao_vitima" value="SIM"> SIM</label>
+<label><input type="radio" name="intimacao_vitima" value="NAO"> NÃO</label>
+</div>
+</div>
+
+<!-- INTIMAÇÃO DO AUTOR -->
+<div class="pergunta">
+<label class="pergunta-titulo">O AUTOR JÁ FOI INTIMADO?</label>
+<div class="opcoes">
+<label><input type="radio" name="intimacao_autor" value="SIM"> SIM</label>
+<label><input type="radio" name="intimacao_autor" value="NAO"> NÃO</label>
+<label><input type="radio" name="intimacao_autor" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- PROCESSO -->
+<div class="pergunta">
+<label class="pergunta-titulo">NÚMERO DO PROCESSO</label>
+<input id="numero_processo">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">JUÍZO (JUVID)</label>
+<input id="juizo">
+</div>
+
+<div class="pergunta">
+<label class="pergunta-titulo">DATA DE EXPEDIÇÃO</label>
+<input id="data_expedicao" placeholder="DD/MM/AAAA">
+</div>
+
+<!-- REPRESENTAÇÃO -->
+<div class="pergunta">
+<label class="pergunta-titulo">JÁ REPRESENTOU CONTRA O AUTOR NA DELEGACIA DA MULHER?</label>
+<div class="opcoes">
+<label><input type="radio" name="representacao" value="NAO"> NÃO</label>
+<label><input type="radio" name="representacao" value="SIM"> SIM</label>
+</div>
+<input id="data_representacao" placeholder="DATA (SE SIM)">
+</div>
+
+</div>
+
+<div class="titulo">4 - BLOCO I - SOBRE O HISTÓRICO DE VIOLÊNCIA</div>
+<div class="card">
+
+<!-- AGRESSÃO FÍSICA -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ PRATICOU ALGUMA AGRESSÃO FÍSICA?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="agressao_fisica" value="QUEIMADURA"> QUEIMADURA</label>
+<label><input type="checkbox" name="agressao_fisica" value="FACADA"> FACADA</label>
+<label><input type="checkbox" name="agressao_fisica" value="TIRO"> TIRO</label>
+<label><input type="checkbox" name="agressao_fisica" value="PUXAO DE CABELO"> PUXÃO DE CABELO</label>
+<label><input type="checkbox" name="agressao_fisica" value="ENFORCAMENTO"> ENFORCAMENTO</label>
+<label><input type="checkbox" name="agressao_fisica" value="PAULADA"> PAULADA</label>
+<label><input type="checkbox" name="agressao_fisica" value="SOCO"> SOCO</label>
+<label><input type="checkbox" name="agressao_fisica" value="SUFOCAMENTO"> SUFOCAMENTO</label>
+<label><input type="checkbox" name="agressao_fisica" value="CHUTE"> CHUTE</label>
+<label><input type="checkbox" name="agressao_fisica" value="EMPURRAO"> EMPURRÃO</label>
+<label><input type="checkbox" name="agressao_fisica" value="AFOGAMENTO"> AFOGAMENTO</label>
+<label><input type="checkbox" name="agressao_fisica" value="TAPA"> TAPA</label>
+<label><input type="checkbox" name="agressao_fisica" value="ESTRANGULAMENTO"> ESTRANGULAMENTO</label>
+<label><input type="checkbox" name="agressao_fisica" value="NENHUMA"> NENHUMA AGRESSÃO FÍSICA</label>
+</div>
+<input id="agressao_fisica_outro" placeholder="OUTRAS">
+</div>
+
+<!-- ATENDIMENTO MÉDICO -->
+<div class="pergunta">
+<label class="pergunta-titulo">HOUVE NECESSIDADE DE ATENDIMENTO MÉDICO OU INTERNAÇÃO?</label>
+<div class="opcoes">
+<label><input type="radio" name="atendimento_medico" value="ATENDIMENTO MEDICO"> SIM, ATENDIMENTO MÉDICO</label>
+<label><input type="radio" name="atendimento_medico" value="INTERNACAO"> SIM, INTERNAÇÃO</label>
+<label><input type="radio" name="atendimento_medico" value="NAO"> NÃO</label>
+</div>
+</div>
+
+<!-- VIOLÊNCIA PSICOLÓGICA -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ PRATICOU VIOLÊNCIA PSICOLÓGICA?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="psicologica" value="AMEACA DE MORTE"> AMEAÇA DE MORTE</label>
+<label><input type="checkbox" name="psicologica" value="AMEACA COM ARMA DE FOGO"> AMEAÇA COM ARMA DE FOGO</label>
+<label><input type="checkbox" name="psicologica" value="AMEACA COM FACA"> AMEAÇA COM FACA</label>
+<label><input type="checkbox" name="psicologica" value="CHANTAGEM"> CHANTAGEM</label>
+<label><input type="checkbox" name="psicologica" value="HUMILHACAO"> HUMILHAÇÃO</label>
+<label><input type="checkbox" name="psicologica" value="MANIPULACAO"> MANIPULAÇÃO</label>
+<label><input type="checkbox" name="psicologica" value="PROIBIU VISITAR"> PROIBIU VISITAR FAMILIARES/AMIGOS</label>
+<label><input type="checkbox" name="psicologica" value="PROIBIU TRABALHAR"> PROIBIU TRABALHAR/ESTUDAR</label>
+<label><input type="checkbox" name="psicologica" value="DISTORCEU FATOS"> DISTORCEU FATOS</label>
+<label><input type="checkbox" name="psicologica" value="SE NAO FOR MINHA"> "SE NÃO FOR MINHA NÃO SERÁ DE MAIS NINGUÉM"</label>
+<label><input type="checkbox" name="psicologica" value="PERSEGUICAO"> PERSEGUIÇÃO/VIGILÂNCIA</label>
+<label><input type="checkbox" name="psicologica" value="LIGACOES INSISTENTES"> LIGAÇÕES/MENSAGENS INSISTENTES</label>
+<label><input type="checkbox" name="psicologica" value="CIUME EXCESSIVO"> CIÚME EXCESSIVO/CONTROLE</label>
+<label><input type="checkbox" name="psicologica" value="NENHUMA"> NENHUMA</label>
+</div>
+<input id="psicologica_outro" placeholder="OUTRAS">
+</div>
+
+<!-- VIOLÊNCIA SEXUAL -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ PRATICOU VIOLÊNCIA SEXUAL?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="sexual" value="FORCOU CONTRACEPTIVO"> FORÇOU USO DE CONTRACEPTIVOS</label>
+<label><input type="checkbox" name="sexual" value="PROVOCOU ABORTO"> PROVOCOU ABORTO</label>
+<label><input type="checkbox" name="sexual" value="IMPEDIU CONTRACEPTIVO"> IMPEDIU USO DE CONTRACEPTIVOS</label>
+<label><input type="checkbox" name="sexual" value="ATO SEXUAL NAO DESEJADO"> ATOS SEXUAIS NÃO DESEJADOS</label>
+<label><input type="checkbox" name="sexual" value="FORCOU GRAVIDEZ"> FORÇOU GRAVIDEZ</label>
+<label><input type="checkbox" name="sexual" value="ESTUPRO"> ESTUPRO</label>
+<label><input type="checkbox" name="sexual" value="NENHUMA"> NENHUMA</label>
+</div>
+<input id="sexual_outro" placeholder="OUTRAS">
+</div>
+
+<!-- VIOLÊNCIA PATRIMONIAL -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ PRATICOU VIOLÊNCIA PATRIMONIAL?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="patrimonial" value="DANIFICOU MOVEIS"> DANIFICOU MÓVEIS</label>
+<label><input type="checkbox" name="patrimonial" value="DANIFICOU ROUPAS"> DANIFICOU ROUPAS</label>
+<label><input type="checkbox" name="patrimonial" value="DESTRUIU DOCUMENTOS"> DESTRUIU/RETEVE DOCUMENTOS</label>
+<label><input type="checkbox" name="patrimonial" value="DANIFICOU UTENSILIOS"> DANIFICOU UTENSÍLIOS</label>
+<label><input type="checkbox" name="patrimonial" value="QUEBROU CELULAR"> QUEBROU CELULAR</label>
+<label><input type="checkbox" name="patrimonial" value="DANIFICOU ELETRODOMESTICOS"> DANIFICOU ELETRODOMÉSTICOS</label>
+<label><input type="checkbox" name="patrimonial" value="CONTROLOU DINHEIRO"> CONTROLOU DINHEIRO</label>
+<label><input type="checkbox" name="patrimonial" value="NENHUMA"> NENHUMA</label>
+</div>
+<input id="patrimonial_outro" placeholder="OUTRAS">
+</div>
+
+<!-- VIOLÊNCIA MORAL -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ PRATICOU VIOLÊNCIA MORAL?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="moral" value="CALUNIA"> CALÚNIA</label>
+<label><input type="checkbox" name="moral" value="DIFAMACAO"> DIFAMAÇÃO</label>
+<label><input type="checkbox" name="moral" value="INJURIA"> INJÚRIA</label>
+</div>
+</div>
+
+<!-- REGISTRO ANTERIOR -->
+<div class="pergunta">
+<label class="pergunta-titulo">JÁ REGISTROU OCORRÊNCIA OU MPU CONTRA ESTE AGRESSOR?</label>
+<div class="opcoes">
+<label><input type="radio" name="registro_anterior" value="SIM"> SIM</label>
+<label><input type="radio" name="registro_anterior" value="NAO"> NÃO</label>
+<label><input type="radio" name="registro_anterior" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- AGRAVAMENTO -->
+<div class="pergunta">
+<label class="pergunta-titulo">AS AGRESSÕES SE TORNARAM MAIS FREQUENTES OU GRAVES?</label>
+<div class="opcoes">
+<label><input type="radio" name="agravamento" value="SIM"> SIM</label>
+<label><input type="radio" name="agravamento" value="NAO"> NÃO</label>
+<label><input type="radio" name="agravamento" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+</div>
+
+<div class="titulo">5 - BLOCO II - SOBRE O(A) AGRESSOR(A)</div>
+<div class="card">
+
+<!-- USO DE SUBSTÂNCIAS -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) FAZ USO ABUSIVO DE ÁLCOOL, DROGAS OU MEDICAMENTOS?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="substancias_agressor" value="ALCOOL"> SIM, ÁLCOOL</label>
+<label><input type="checkbox" name="substancias_agressor" value="DROGAS"> SIM, DROGAS</label>
+<label><input type="checkbox" name="substancias_agressor" value="MEDICAMENTOS"> SIM, MEDICAMENTOS</label>
+<label><input type="checkbox" name="substancias_agressor" value="NAO"> NÃO</label>
+<label><input type="checkbox" name="substancias_agressor" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- DOENÇA MENTAL -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) TEM DOENÇA MENTAL COMPROVADA?</label>
+<div class="opcoes">
+<label><input type="radio" name="doenca_mental" value="SIM COM MEDICACAO"> SIM, FAZ USO DE MEDICAÇÃO</label>
+<label><input type="radio" name="doenca_mental" value="SIM SEM MEDICACAO"> SIM, NÃO FAZ USO DE MEDICAÇÃO</label>
+<label><input type="radio" name="doenca_mental" value="NAO"> NÃO</label>
+<label><input type="radio" name="doenca_mental" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- ACOMPANHAMENTO -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) FAZ ACOMPANHAMENTO PSICOLÓGICO?</label>
+<div class="opcoes">
+<label><input type="radio" name="psicologico" value="SIM"> SIM</label>
+<label><input type="radio" name="psicologico" value="NAO"> NÃO</label>
+<label><input type="radio" name="psicologico" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- SUICÍDIO -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ TENTOU OU AMEAÇOU SUICÍDIO?</label>
+<div class="opcoes">
+<label><input type="radio" name="suicidio" value="SIM"> SIM</label>
+<label><input type="radio" name="suicidio" value="NAO"> NÃO</label>
+<label><input type="radio" name="suicidio" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- DESCUMPRIMENTO MPU -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ DESCUMPRIU MEDIDA PROTETIVA?</label>
+<div class="opcoes">
+<label><input type="radio" name="descumpriu_mpu" value="SIM"> SIM</label>
+<label><input type="radio" name="descumpriu_mpu" value="NAO"> NÃO</label>
+<label><input type="radio" name="descumpriu_mpu" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- SITUAÇÃO FINANCEIRA -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) ESTÁ DESEMPREGADO OU COM DIFICULDADES FINANCEIRAS?</label>
+<div class="opcoes">
+<label><input type="radio" name="financeiro" value="SIM"> SIM</label>
+<label><input type="radio" name="financeiro" value="NAO"> NÃO</label>
+<label><input type="radio" name="financeiro" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- ARMA -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) POSSUI OU TEM ACESSO A ARMA DE FOGO?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="arma_agressor" value="USOU"> USOU</label>
+<label><input type="checkbox" name="arma_agressor" value="AMEACOU"> AMEAÇOU USAR</label>
+<label><input type="checkbox" name="arma_agressor" value="TEM ACESSO"> TEM ACESSO</label>
+<label><input type="checkbox" name="arma_agressor" value="NAO"> NÃO</label>
+<label><input type="checkbox" name="arma_agressor" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- AGRESSÃO A TERCEIROS -->
+<div class="pergunta">
+<label class="pergunta-titulo">O(A) AGRESSOR(A) JÁ AMEAÇOU OU AGREDIU OUTRAS PESSOAS OU ANIMAIS?</label>
+<div class="opcoes">
+<label><input type="checkbox" name="agressao_terceiros" value="FILHOS"> FILHOS</label>
+<label><input type="checkbox" name="agressao_terceiros" value="FAMILIARES"> FAMILIARES</label>
+<label><input type="checkbox" name="agressao_terceiros" value="AMIGOS"> AMIGOS</label>
+<label><input type="checkbox" name="agressao_terceiros" value="COLEGAS"> COLEGAS DE TRABALHO</label>
+<label><input type="checkbox" name="agressao_terceiros" value="OUTRAS PESSOAS"> OUTRAS PESSOAS</label>
+<label><input type="checkbox" name="agressao_terceiros" value="ANIMAIS"> ANIMAIS</label>
+<label><input type="checkbox" name="agressao_terceiros" value="NAO"> NÃO</label>
+<label><input type="checkbox" name="agressao_terceiros" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- MEIO UTILIZADO -->
+<div class="pergunta">
+<label class="pergunta-titulo">MEIO UTILIZADO NAS AGRESSÕES</label>
+<div class="opcoes">
+<label><input type="radio" name="meio" value="ARMA DE FOGO"> ARMA DE FOGO</label>
+<label><input type="radio" name="meio" value="ARMA BRANCA"> ARMA BRANCA</label>
+<label><input type="radio" name="meio" value="FALA"> FALA</label>
+<label><input type="radio" name="meio" value="OUTRO"> OUTRO</label>
+</div>
+<input id="meio_outro" placeholder="DESCREVER">
+</div>
+
+</div>
+
+<div class="titulo">6 - BLOCO III - SOBRE VOCÊ</div>
+<div class="card">
+
+<!-- SEPARAÇÃO RECENTE -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ SE SEPAROU RECENTEMENTE DO(A) AGRESSOR(A) OU MANIFESTOU INTENÇÃO DE SE SEPARAR?</label>
+<div class="opcoes">
+<label><input type="radio" name="separacao_recente" value="SIM"> SIM</label>
+<label><input type="radio" name="separacao_recente" value="NAO"> NÃO</label>
+</div>
+</div>
+
+<!-- FILHOS -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ TEM FILHOS?</label>
+<div class="opcoes">
+<label><input type="radio" name="filhos_vitima" value="NAO"> NÃO</label>
+
+<label><input type="radio" name="filhos_vitima" value="SIM COM AGRESSOR"> SIM, COM O AGRESSOR</label>
+<input id="filhos_agressor_qtd" placeholder="QUANTOS / NOMES E IDADES">
+
+<label><input type="radio" name="filhos_vitima" value="SIM OUTRO RELACIONAMENTO"> SIM, DE OUTRO RELACIONAMENTO</label>
+<input id="filhos_outros_qtd" placeholder="QUANTOS / NOMES E IDADES">
+</div>
+</div>
+
+<!-- DEFICIÊNCIA -->
+<div class="pergunta">
+<label class="pergunta-titulo">ALGUM DE SEUS FILHOS É PESSOA COM DEFICIÊNCIA?</label>
+<div class="opcoes">
+<label><input type="radio" name="filho_deficiencia" value="SIM"> SIM</label>
+<label><input type="radio" name="filho_deficiencia" value="NAO"> NÃO</label>
+<label><input type="radio" name="filho_deficiencia" value="NAO TEM FILHOS"> NÃO TENHO FILHOS</label>
+</div>
+</div>
+
+<!-- GUARDA -->
+<div class="pergunta">
+<label class="pergunta-titulo">EXISTE CONFLITO SOBRE GUARDA, VISITA OU PENSÃO?</label>
+<div class="opcoes">
+<label><input type="radio" name="guarda" value="SIM"> SIM</label>
+<label><input type="radio" name="guarda" value="NAO"> NÃO</label>
+<label><input type="radio" name="guarda" value="NAO TEM FILHOS COM AGRESSOR"> NÃO TENHO FILHOS COM O AGRESSOR</label>
+</div>
+</div>
+
+<!-- PRESENCIARAM VIOLÊNCIA -->
+<div class="pergunta">
+<label class="pergunta-titulo">SEUS FILHOS PRESENCIARAM VIOLÊNCIA?</label>
+<div class="opcoes">
+<label><input type="radio" name="presenciaram" value="SIM"> SIM</label>
+<label><input type="radio" name="presenciaram" value="NAO"> NÃO</label>
+<label><input type="radio" name="presenciaram" value="NAO TEM FILHOS"> NÃO TENHO FILHOS</label>
+</div>
+</div>
+
+<!-- VIOLÊNCIA NA GRAVIDEZ -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ SOFREU VIOLÊNCIA DURANTE A GRAVIDEZ OU ATÉ 3 MESES APÓS O PARTO?</label>
+<div class="opcoes">
+<label><input type="radio" name="violencia_gravidez" value="SIM"> SIM</label>
+<label><input type="radio" name="violencia_gravidez" value="NAO"> NÃO</label>
+<label><input type="radio" name="violencia_gravidez" value="NAO TEM FILHOS"> NÃO TENHO FILHOS</label>
+</div>
+</div>
+
+<!-- GRAVIDEZ RECENTE -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ ESTÁ GRÁVIDA OU TEVE BEBÊ NOS ÚLTIMOS 18 MESES?</label>
+<div class="opcoes">
+<label><input type="radio" name="gravidez_recente" value="SIM"> SIM</label>
+<label><input type="radio" name="gravidez_recente" value="NAO"> NÃO</label>
+</div>
+</div>
+
+<!-- ACOMPANHAMENTO PSICOLÓGICO -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ FAZ ACOMPANHAMENTO PSICOLÓGICO?</label>
+<div class="opcoes">
+<label><input type="radio" name="psicologico_vitima" value="NAO"> NÃO</label>
+<label><input type="radio" name="psicologico_vitima" value="SIM"> SIM</label>
+</div>
+<input id="orgao_psicologico" placeholder="QUAL ÓRGÃO">
+</div>
+
+<!-- RESIDÊNCIA -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ RESIDE COM O AGRESSOR OU ELE TEM ACESSO À SUA CASA?</label>
+<div class="opcoes">
+<label><input type="radio" name="residencia" value="NAO"> NÃO</label>
+<label><input type="radio" name="residencia" value="SIM RESIDE"> SIM, RESIDO COM ELE</label>
+<label><input type="radio" name="residencia" value="SIM TEM ACESSO"> SIM, ELE TEM ACESSO</label>
+</div>
+</div>
+
+<!-- LOCAL SEGURO -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ POSSUI LOCAL SEGURO PARA IR EM CASO DE RISCO?</label>
+<div class="opcoes">
+<label><input type="radio" name="local_seguro" value="NAO"> NÃO</label>
+<label><input type="radio" name="local_seguro" value="FAMILIARES"> SIM, FAMILIARES</label>
+<label><input type="radio" name="local_seguro" value="AMIGOS"> SIM, AMIGOS</label>
+<label><input type="radio" name="local_seguro" value="OUTRO"> OUTRO</label>
+</div>
+<input id="local_seguro_outro" placeholder="DESCREVER">
+</div>
+
+</div>
+
+<div class="titulo">7 - BLOCO IV - OUTRAS INFORMAÇÕES IMPORTANTES</div>
+<div class="card">
+
+<!-- LOCAL DE RISCO -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ CONSIDERA QUE MORA EM LOCAL DE RISCO DE VIOLÊNCIA?</label>
+<div class="opcoes">
+<label><input type="radio" name="area_risco" value="SIM"> SIM</label>
+<label><input type="radio" name="area_risco" value="NAO"> NÃO</label>
+<label><input type="radio" name="area_risco" value="NAO SABE"> NÃO SABE</label>
+</div>
+</div>
+
+<!-- SITUAÇÃO DE MORADIA -->
+<div class="pergunta">
+<label class="pergunta-titulo">QUAL SUA SITUAÇÃO DE MORADIA?</label>
+<div class="opcoes">
+<label><input type="radio" name="moradia" value="PROPRIA"> PRÓPRIA</label>
+<label><input type="radio" name="moradia" value="ALUGADA"> ALUGADA</label>
+<label><input type="radio" name="moradia" value="CEDIDA"> CEDIDA / DE FAVOR</label>
+</div>
+<input id="moradia_detalhe" placeholder="POR QUEM FOI CEDIDA">
+</div>
+
+<!-- DEPENDÊNCIA FINANCEIRA -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ SE CONSIDERA DEPENDENTE FINANCEIRAMENTE DO(A) AGRESSOR(A)?</label>
+<div class="opcoes">
+<label><input type="radio" name="dependencia" value="SIM"> SIM</label>
+<label><input type="radio" name="dependencia" value="NAO"> NÃO</label>
+</div>
+</div>
+
+<!-- ABRIGAMENTO -->
+<div class="pergunta">
+<label class="pergunta-titulo">VOCÊ ACEITA ABRIGAMENTO TEMPORÁRIO?</label>
+<div class="opcoes">
+<label><input type="radio" name="abrigamento" value="SIM"> SIM</label>
+<label><input type="radio" name="abrigamento" value="NAO"> NÃO</label>
+</div>
+</div>
+
+<!-- REINCIDÊNCIA -->
+<div class="pergunta">
+<label class="pergunta-titulo">APÓS O ÚLTIMO BOLETIM, O AGRESSOR VOLTOU A PRATICAR VIOLÊNCIA?</label>
+<div class="opcoes">
+<label><input type="radio" name="reincidencia" value="SIM"> SIM</label>
+<label><input type="radio" name="reincidencia" value="NAO"> NÃO</label>
+</div>
+</div>
+
+</div>
+
+<div class="titulo">8 - PARA PREENCHIMENTO PELO POLICIAL MILITAR</div>
+<div class="card">
+
+<div class="pergunta">
+<label class="pergunta-titulo">FORMA DE PREENCHIMENTO DO FORMULÁRIO</label>
+<div class="opcoes">
+<label><input type="radio" name="preenchimento_pm" value="SEM AJUDA"> VÍTIMA RESPONDEU SEM AJUDA PROFISSIONAL</label>
+<label><input type="radio" name="preenchimento_pm" value="COM AUXILIO"> VÍTIMA RESPONDEU COM AUXÍLIO PROFISSIONAL</label>
+<label><input type="radio" name="preenchimento_pm" value="NAO CONSEGUIU"> VÍTIMA NÃO TEVE CONDIÇÕES DE RESPONDER</label>
+<label><input type="radio" name="preenchimento_pm" value="RECUSOU"> VÍTIMA RECUSOU-SE A RESPONDER</label>
+<label><input type="radio" name="preenchimento_pm" value="TERCEIRO"> TERCEIRO COMUNICANTE RESPONDEU</label>
+</div>
+</div>
+
+</div>
+
+<div class="titulo">9 - CONCLUSÃO</div>
+<div class="card">
+
+<div class="pergunta">
+<label class="pergunta-titulo">GRAU DE RISCO BASEADO NAS INFORMAÇÕES PRESTADAS</label>
+<div class="opcoes">
+<label><input type="radio" name="grau_risco" value="MEDIO"> MÉDIO</label>
+<label><input type="radio" name="grau_risco" value="ALTO"> ALTO</label>
+<label><input type="radio" name="grau_risco" value="EXTREMO"> EXTREMO</label>
+</div>
+</div>
+
+</div>
+
+<div class="titulo">10 - OBSERVAÇÕES</div>
+<div class="card">
+
+<div class="pergunta">
+<label class="pergunta-titulo">OBSERVAÇÕES COMPLEMENTARES</label>
+<textarea id="observacoes" rows="5" placeholder="DESCREVER INFORMAÇÕES ADICIONAIS"></textarea>
+</div>
+
+</div>
+
+<!-- ================= BOTÃO ENVIAR ================= -->
+<button id="btnEnviar" class="btn-enviar">
+  ENVIAR INFORMAÇÕES
+</button>
+
+<!-- ================= RESULTADO ================= -->
+<div id="resultado" style="display:none;">
+
+  <div class="titulo">HISTÓRICO REDS</div>
+
+  <div class="card">
+    <textarea id="saida_historico" readonly></textarea>
+  </div>
+
+  <div class="acoes">
+    <button id="btnCopiar" class="btn2">COPIAR</button>
+    <button id="btnPDF" class="btn3">GERAR PDF</button>
+  </div>
+
+</div>
+
+<script>
+
+// ===== FUNÇÕES BASE =====
+function val(id){
+  let el = document.getElementById(id);
+  return (el && el.value.trim() !== "") 
+    ? el.value.trim().toUpperCase() 
+    : "_____";
+}
+
+function radio(name){
+  let el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value.toUpperCase() : "_____";
+}
+
+function check(name){
+  let itens = [];
+  document.querySelectorAll(`input[name="${name}"]:checked`)
+    .forEach(el => itens.push(el.value.toUpperCase()));
+  return itens.length ? itens.join(", ") : "_____";
+}
+
+function apenasNumeros(valor){
+  return valor.replace(/\D/g, "");
+}
+
+function mascararTelefone(valor){
+  let n = apenasNumeros(valor).slice(0, 11);
+  if(n.length <= 2) return n.length ? `(${n}` : "";
+  if(n.length <= 7) return `(${n.slice(0,2)}) ${n.slice(2)}`;
+  return `(${n.slice(0,2)}) ${n.slice(2,7)}-${n.slice(7)}`;
+}
+
+function mascararCPF(valor){
+  let n = apenasNumeros(valor).slice(0, 11);
+  if(n.length <= 3) return n;
+  if(n.length <= 6) return `${n.slice(0,3)}.${n.slice(3)}`;
+  if(n.length <= 9) return `${n.slice(0,3)}.${n.slice(3,6)}.${n.slice(6)}`;
+  return `${n.slice(0,3)}.${n.slice(3,6)}.${n.slice(6,9)}-${n.slice(9)}`;
+}
+
+function aplicarMascara(id, fn){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.addEventListener("input", () => {
+    el.value = fn(el.value);
+  });
+}
+
+// ===== HISTÓRICO =====
+function gerarHistorico(){
+  const vitima = val("vitima_nome");
+  const autor = val("autor_nome");
+  const relacao = radio("relacao");
+  const tempoRelacionamento = val("tempo_relacionamento");
+  const separados = radio("separados");
+  const tempoSeparacao = val("tempo_separacao");
+  const moradia = radio("moradia");
+  const moradiaDetalhe = val("moradia_detalhe");
+  const filhos = radio("filhos_vitima");
+  const filhosAgressor = val("filhos_agressor_qtd");
+  const filhosOutros = val("filhos_outros_qtd");
+  const residencia = radio("residencia");
+  const ciumeControle = check("psicologica");
+  const substancias = check("substancias_agressor");
+  const arma = check("arma_agressor");
+  const dataFato = val("data_expedicao");
+  const observacoes = val("observacoes");
+  const agressaoFisica = check("agressao_fisica");
+  const agressaoFisicaOutras = val("agressao_fisica_outro");
+  const psicologica = check("psicologica");
+  const psicologicaOutras = val("psicologica_outro");
+  const sexual = check("sexual");
+  const sexualOutras = val("sexual_outro");
+  const patrimonial = check("patrimonial");
+  const patrimonialOutras = val("patrimonial_outro");
+  const moral = check("moral");
+  const antecedente = radio("antecedente");
+  const antecedenteDesc = val("antecedente_desc");
+  const mpu = radio("mpu_situacao");
+  const processo = val("numero_processo");
+  const juizo = val("juizo");
+  const intimacaoAutor = radio("intimacao_autor");
+  const registroAnterior = radio("registro_anterior");
+  const representacao = radio("representacao");
+  const dataRepresentacao = val("data_representacao");
+  const atendimentoMedico = radio("atendimento_medico");
+  const reincidencia = radio("reincidencia");
+  const grauRisco = radio("grau_risco");
+
+  const texto = `
+ACIONADOS PELO COPOM/SOU/SOF, COMPARECEMOS AO LOCAL DOS FATOS, ONDE REALIZAMOS CONTATO COM A SRA. ${vitima}, A QUAL NOS RELATOU QUE TEVE UM RELACIONAMENTO (${relacao}) COM O SR. ${autor}, DURANTE ${tempoRelacionamento}; QUE ESTÃO SEPARADOS: ${separados}, HÁ ${tempoSeparacao}; QUE A VÍTIMA/ENVOLVIDOS RESIDEM EM IMÓVEL (${moradia}) ${moradiaDetalhe}; QUE POSSUI FILHOS: ${filhos}, SENDO COM O AGRESSOR: ${filhosAgressor} E DE OUTRO RELACIONAMENTO: ${filhosOutros}; QUE A SITUAÇÃO DE RESIDÊNCIA/ACESSO DO AUTOR AO LAR É: ${residencia}.
+
+A VÍTIMA RELATOU AINDA INDÍCIOS DE CONTROLE/CIÚME E VIOLÊNCIA PSICOLÓGICA (${ciumeControle}); QUE O AUTOR FAZ USO DE SUBSTÂNCIAS (${substancias}); E QUANTO A ARMA DE FOGO/ACESSO: ${arma}. QUE NO DIA ${dataFato}, DURANTE ATRITO MOTIVADO POR ${observacoes}, O AUTOR PRATICOU AS SEGUINTES CONDUTAS:
+
+- VIOLÊNCIA FÍSICA: ${agressaoFisica}. OUTRAS: ${agressaoFisicaOutras};
+- VIOLÊNCIA PSICOLÓGICA: ${psicologica}. OUTRAS: ${psicologicaOutras};
+- VIOLÊNCIA SEXUAL: ${sexual}. OUTRAS: ${sexualOutras};
+- VIOLÊNCIA PATRIMONIAL: ${patrimonial}. OUTRAS: ${patrimonialOutras};
+- VIOLÊNCIA MORAL: ${moral}.
+
+QUANTO A ANTECEDENTES DO AUTOR, CONSTA: ${antecedente} (${antecedenteDesc}). SOBRE MEDIDA PROTETIVA, A VÍTIMA INFORMOU: ${mpu}; PROCESSO Nº ${processo}; JUÍZO ${juizo}; SITUAÇÃO DE INTIMAÇÃO DO AUTOR: ${intimacaoAutor}. REGISTRO ANTERIOR DE OCORRÊNCIA/MPU: ${registroAnterior}. REPRESENTAÇÃO NA DEAM: ${representacao} (DATA: ${dataRepresentacao}).
+
+EM RELAÇÃO A LESÕES/ATENDIMENTO, FOI INFORMADO: ${atendimentoMedico}. APÓS O ÚLTIMO BOLETIM, HOUVE REINCIDÊNCIA: ${reincidencia}. GRAU DE RISCO APURADO NESTE ATENDIMENTO: ${grauRisco}.
+
+SEGUNDO A VERSÃO DO AUTOR/ENVOLVIDO: _____.
+SEGUNDO A VERSÃO DE TESTEMUNHA(S): _____.
+CASO NÃO HAJA TESTEMUNHAS, CONSTA QUE OS ENVOLVIDOS NÃO APRESENTARAM TESTEMUNHAS.
+
+APESAR DO RELATO, A EQUIPE PM OBSERVOU NO LOCAL: _____.
+FOI RECOLHIDO NO LOCAL: _____, O QUAL FOI RELACIONADO EM CAMPO PRÓPRIO.
+A VÍTIMA FOI ORIENTADA A COMPARECER À DEAM/DP PARA AS PROVIDÊNCIAS LEGAIS E REPRESENTAÇÃO CRIMINAL CABÍVEL.
+`;
+
+  document.getElementById("saida_historico").value = texto.trim();
+}
+
+// ===== CONTROLE =====
+let enviado = false;
+
+// ===== BOTÃO PRINCIPAL =====
+function enviarFormulario(){
+
+  let btn = document.getElementById("btnEnviar");
+
+  // 👉 VOLTAR PARA EDIÇÃO
+  if(enviado){
+    document.getElementById("resultado").style.display = "none";
+    btn.innerText = "ENVIAR INFORMAÇÕES";
+    enviado = false;
+    return;
+  }
+
+  // 👉 GERAR
+  btn.innerText = "GERANDO...";
+  btn.disabled = true;
+
+  gerarHistorico();
+
+  let resultado = document.getElementById("resultado");
+  resultado.style.display = "block";
+  resultado.scrollIntoView({behavior:"smooth"});
+
+  setTimeout(()=>{
+    btn.innerText = "EDITAR INFORMAÇÕES";
+    btn.disabled = false;
+    enviado = true;
+  },800);
+}
+
+// ===== COPIAR =====
+function copiarHistorico(){
+  let texto = document.getElementById("saida_historico").value;
+  navigator.clipboard.writeText(texto)
+    .then(()=> alert("HISTÓRICO COPIADO"))
+    .catch(()=> alert("ERRO AO COPIAR"));
+}
+
+// ===== PDF =====
+function gerarPDF(){
+  const tela = window.open('', '', 'width=900,height=1000');
+  if(!tela){
+    alert("NÃO FOI POSSÍVEL ABRIR A JANELA DE IMPRESSÃO. VERIFIQUE O BLOQUEIO DE POP-UP.");
+    return;
+  }
+
+  function linha(id){
+    const el = document.getElementById(id);
+    return (el && el.value.trim() !== "") ? el.value.trim().toUpperCase() : "_____";
+  }
+
+  function radioMarcado(name){
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value.toUpperCase() : "_____";
+  }
+
+  function checksMarcados(name){
+    const valores = [];
+    document.querySelectorAll(`input[name="${name}"]:checked`).forEach(el => {
+      valores.push(el.value.toUpperCase());
+    });
+    return valores.length ? valores.join(", ") : "_____";
+  }
+
+  function opcaoRadio(name, valor, texto){
+    const marcado = radioMarcado(name) === valor.toUpperCase() ? "☑" : "☐";
+    return `<span class="opcao">${marcado} ${texto}</span>`;
+  }
+
+  const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>FONAR - EXPORTAÇÃO</title>
+  <style>
+    @page { size: A4; margin: 10mm 9mm; }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10.3px;
+      color:#000;
+      line-height:1.22;
+      letter-spacing:0.05px;
+    }
+    h1{
+      font-size: 14px;
+      margin:0 0 6px 0;
+      text-align:center;
+      letter-spacing:0.2px;
+    }
+    h2{
+      font-size: 11px;
+      margin:8px 0 4px 0;
+      font-weight:700;
+      text-transform:none;
+    }
+    p{
+      margin:2px 0;
+      text-align:left;
+    }
+    .linha{
+      display:inline-block;
+      min-width:120px;
+      border-bottom:1px dotted #000;
+      padding:0 2px 1px 2px;
+      line-height:1.1;
+      vertical-align:baseline;
+    }
+    .opcao{
+      display:inline-block;
+      margin-right:8px;
+      white-space:nowrap;
+    }
+    .topo{
+      border:1px solid #000;
+      padding:4px 6px;
+      margin-bottom:6px;
+    }
+    .secao{
+      border:1px solid #000;
+      padding:4px 6px;
+      margin-bottom:5px;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+    .secao + .secao{ margin-top:2px; }
+    .secao h2{
+      margin-top:0;
+      border-bottom:1px solid #000;
+      padding-bottom:2px;
+    }
+    .declaracao{
+      margin-top:6px;
+      border-top:1px solid #000;
+      padding-top:4px;
+    }
+    .topico-final{
+      margin-top:12px;
+      padding-top:4px;
+    }
+    .topico-final p{
+      margin:3px 0;
+    }
+    .quebra{ page-break-after: auto; }
+    .rodape-pagina{
+      margin-top:6px;
+      text-align:center;
+      font-size:9.5px;
+    }
+    .secao p{
+      page-break-inside:avoid;
+      break-inside:avoid;
+      orphans:3;
+      widows:3;
+    }
+  </style>
+</head>
+<body>
+  <div class="topo">
+    <h1>FORMULÁRIO DE AVALIAÇÃO DE RISCO</h1>
+  </div>
+
+  <div class="secao">
+  <h2>Identificação das Partes - Vítima</h2>
+  <p>Nome da vítima: <span class="linha">${linha("vitima_nome")}</span> | Idade: ${linha("vitima_idade")} anos</p>
+  <p>Estado civil: ${opcaoRadio("estado_vitima","SOLTEIRA","Solteira")} ${opcaoRadio("estado_vitima","CASADA","Casada")} ${opcaoRadio("estado_vitima","DIVORCIADA","Divorciada")} ${opcaoRadio("estado_vitima","SEPARADA JUDICIALMENTE","Separada judicialmente")} ${opcaoRadio("estado_vitima","VIUVA","Viúva")} ${opcaoRadio("estado_vitima","UNIAO ESTAVEL","União estável")}</p>
+  <p>Escolaridade: ${opcaoRadio("esc_vitima","ANALFABETA","Analfabeta")} ${opcaoRadio("esc_vitima","ALFABETIZADA","Alfabetizada")} ${opcaoRadio("esc_vitima","FUNDAMENTAL INCOMPLETO","Fundamental incompleto")} ${opcaoRadio("esc_vitima","FUNDAMENTAL COMPLETO","Fundamental completo")} ${opcaoRadio("esc_vitima","MEDIO INCOMPLETO","Médio incompleto")} ${opcaoRadio("esc_vitima","MEDIO COMPLETO","Médio completo")} ${opcaoRadio("esc_vitima","SUPERIOR INCOMPLETO","Superior incompleto")} ${opcaoRadio("esc_vitima","SUPERIOR COMPLETO","Superior completo")} ${opcaoRadio("esc_vitima","POS GRADUACAO","Pós-graduação")}</p>
+  <p>Nacionalidade: ${opcaoRadio("nac_vitima","BRASILEIRA","Brasileira")} ${opcaoRadio("nac_vitima","ESTRANGEIRA","Estrangeira")} | País: ${linha("pais_vitima")}</p>
+  <p>Tel.1: ${linha("tel1_vitima")} | Tel.2: ${linha("tel2_vitima")} | PM: ${opcaoRadio("pm_vitima","NAO","Não")} ${opcaoRadio("pm_vitima","SIM","Sim")} Unidade: ${linha("unidade_vitima")}</p>
+  <p>Profissão: ${linha("prof_vitima")} | Horário de trabalho: ${linha("horario_vitima")}</p>
+  <p>Endereço profissional: ${linha("endereco_prof_vitima")}</p>
+  <p>Cor/raça: ${opcaoRadio("cor_vitima","BRANCA","Branca")} ${opcaoRadio("cor_vitima","PRETA","Preta")} ${opcaoRadio("cor_vitima","PARDA","Parda")} ${opcaoRadio("cor_vitima","AMARELA","Amarela")} ${opcaoRadio("cor_vitima","INDIGENA","Indígena")} ${opcaoRadio("cor_vitima","ORIENTAL","Oriental")}</p>
+  <p>Email: ${linha("email_vitima")} | CPF: ${linha("cpf_vitima")}</p>
+  <p>Relação vítima/autor: ${opcaoRadio("relacao","CONJUGE","Cônjuge")} ${opcaoRadio("relacao","COMPANHEIRO","Companheiro(a)")} ${opcaoRadio("relacao","EX CONJUGE","Ex-cônjuge")} ${opcaoRadio("relacao","EX COMPANHEIRO","Ex-companheiro(a)")} ${opcaoRadio("relacao","NAMORADO","Namorado(a)")} ${opcaoRadio("relacao","EX NAMORADO","Ex-namorado(a)")} ${opcaoRadio("relacao","CASO","Caso")} ${opcaoRadio("relacao","EXTRACONJUGAL","Relação extraconjugal")}</p>
+  </div>
+
+  <div class="secao">
+  <h2>Identificação das Partes - Agressor</h2>
+  <p>Nome do(a) agressor(a): <span class="linha">${linha("autor_nome")}</span> | Idade: ${linha("autor_idade")} anos</p>
+  <p>Estado civil: ${opcaoRadio("estado_autor","SOLTEIRO","Solteiro(a)")} ${opcaoRadio("estado_autor","CASADO","Casado(a)")} ${opcaoRadio("estado_autor","UNIAO ESTAVEL","União estável")} ${opcaoRadio("estado_autor","DIVORCIADO","Divorciado(a)")} ${opcaoRadio("estado_autor","SEPARADO JUDICIALMENTE","Separado(a) judicialmente")} ${opcaoRadio("estado_autor","VIUVO","Viúvo(a)")}</p>
+  <p>Escolaridade: ${opcaoRadio("esc_autor","ANALFABETO","Analfabeto(a)")} ${opcaoRadio("esc_autor","ALFABETIZADO","Alfabetizado(a)")} ${opcaoRadio("esc_autor","FUNDAMENTAL INCOMPLETO","Fundamental incompleto")} ${opcaoRadio("esc_autor","FUNDAMENTAL COMPLETO","Fundamental completo")} ${opcaoRadio("esc_autor","MEDIO INCOMPLETO","Médio incompleto")} ${opcaoRadio("esc_autor","MEDIO COMPLETO","Médio completo")} ${opcaoRadio("esc_autor","SUPERIOR INCOMPLETO","Superior incompleto")} ${opcaoRadio("esc_autor","SUPERIOR COMPLETO","Superior completo")} ${opcaoRadio("esc_autor","POS GRADUACAO","Pós-graduação")}</p>
+  <p>Nacionalidade: ${opcaoRadio("nac_autor","BRASILEIRO","Brasileiro(a)")} ${opcaoRadio("nac_autor","ESTRANGEIRO","Estrangeiro(a)")} | País: ${linha("pais_autor")}</p>
+  <p>Tel.1: ${linha("tel1_autor")} | Tel.2: ${linha("tel2_autor")} | PM: ${opcaoRadio("pm_autor","NAO","Não")} ${opcaoRadio("pm_autor","SIM","Sim")} Unidade: ${linha("unidade_autor")}</p>
+  <p>Profissão: ${linha("prof_autor")} | Horário de trabalho: ${linha("horario_autor")}</p>
+  <p>Endereço profissional: ${linha("endereco_prof_autor")}</p>
+  <p>Cor/raça: ${radioMarcado("cor_autor")} | Email: ${linha("email_autor")} | CPF: ${linha("cpf_autor")}</p>
+  <p>Possui antecedentes criminais? ${opcaoRadio("antecedente","NAO POSSUI","Não")} ${opcaoRadio("antecedente","POSSUI","Sim")} ${linha("antecedente_desc")}</p>
+  </div>
+
+  <div class="secao">
+  <h2>Informações sobre a situação atual entre as partes</h2>
+  <p>Tempo de relacionamento: ${linha("tempo_relacionamento")} | Estão separados? ${opcaoRadio("separados","NAO","Não")} ${opcaoRadio("separados","SIM","Sim")} há ${linha("tempo_separacao")}</p>
+  <p>Há quanto tempo ocorre violência: ${linha("tempo_violencia")} | Possui MPU? ${opcaoRadio("mpu_situacao","SIM","Sim")} ${opcaoRadio("mpu_situacao","NAO","Não")} ${opcaoRadio("mpu_situacao","SOLICITOU","Solicitou")}</p>
+  <p>Intimação da vítima: ${opcaoRadio("intimacao_vitima","SIM","Sim")} ${opcaoRadio("intimacao_vitima","NAO","Não")} | Autor intimado: ${opcaoRadio("intimacao_autor","SIM","Sim")} ${opcaoRadio("intimacao_autor","NAO","Não")} ${opcaoRadio("intimacao_autor","NAO SABE","Não sabe")}</p>
+  <p>Nº Processo: ${linha("numero_processo")} | Juízo (JUVID): ${linha("juizo")} | Data de expedição: ${linha("data_expedicao")}</p>
+  <p>Já representou contra o autor? ${opcaoRadio("representacao","NAO","Não")} ${opcaoRadio("representacao","SIM","Sim")} Data: ${linha("data_representacao")}</p>
+  </div>
+
+  <div class="secao">
+  <h2>Bloco I - Sobre o histórico de violência</h2>
+  <p>1. Agressões físicas: ${checksMarcados("agressao_fisica")} | Outras: ${linha("agressao_fisica_outro")}</p>
+  <p>2. Atendimento médico/internação: ${opcaoRadio("atendimento_medico","ATENDIMENTO MEDICO","Sim, atendimento médico")} ${opcaoRadio("atendimento_medico","INTERNACAO","Sim, internação")} ${opcaoRadio("atendimento_medico","NAO","Não")}</p>
+  <p>3. Violências psicológicas: ${checksMarcados("psicologica")} | Outras: ${linha("psicologica_outro")}</p>
+  <p>4. Agressões sexuais: ${checksMarcados("sexual")} | Outras: ${linha("sexual_outro")}</p>
+  <p>5. Agressões patrimoniais: ${checksMarcados("patrimonial")} | Outras: ${linha("patrimonial_outro")}</p>
+  <p>6. Agressões morais: ${checksMarcados("moral")}</p>
+  <p>7. Já registrou ocorrência/pediu MPU? ${opcaoRadio("registro_anterior","SIM","Sim")} ${opcaoRadio("registro_anterior","NAO","Não")} ${opcaoRadio("registro_anterior","NAO SABE","Não sei")}</p>
+  <p>8. Ameaças/agressões ficaram mais frequentes/graves? ${opcaoRadio("agravamento","SIM","Sim")} ${opcaoRadio("agravamento","NAO","Não")} ${opcaoRadio("agravamento","NAO SABE","Não sei")}</p>
+  </div>
+
+  <div class="secao">
+  <h2>Bloco II - Sobre o(a) agressor(a)</h2>
+  <p>9. Uso abusivo de álcool/drogas/medicamentos: ${checksMarcados("substancias_agressor")}</p>
+  <p>10. Doença mental comprovada: ${opcaoRadio("doenca_mental","SIM COM MEDICACAO","Sim e faz uso de medicação")} ${opcaoRadio("doenca_mental","SIM SEM MEDICACAO","Sim e não faz uso de medicação")} ${opcaoRadio("doenca_mental","NAO","Não")} ${opcaoRadio("doenca_mental","NAO SABE","Não sei")}</p>
+  <p>11. Acompanhamento psicológico: ${opcaoRadio("psicologico","SIM","Sim")} ${opcaoRadio("psicologico","NAO","Não")} ${opcaoRadio("psicologico","NAO SABE","Não sei")}</p>
+  <p>12. Tentou/ameaçou suicídio: ${opcaoRadio("suicidio","SIM","Sim")} ${opcaoRadio("suicidio","NAO","Não")} ${opcaoRadio("suicidio","NAO SABE","Não sei")}</p>
+  <p>13. Descumpriu MPU: ${opcaoRadio("descumpriu_mpu","SIM","Sim")} ${opcaoRadio("descumpriu_mpu","NAO","Não")} ${opcaoRadio("descumpriu_mpu","NAO SABE","Não sei")}</p>
+  <p>14. Dificuldades financeiras/desemprego: ${opcaoRadio("financeiro","SIM","Sim")} ${opcaoRadio("financeiro","NAO","Não")} ${opcaoRadio("financeiro","NAO SABE","Não sei")}</p>
+  <p>15. Uso/ameaça/acesso a arma: ${checksMarcados("arma_agressor")}</p>
+  <p>16. Ameaçou/agrediu terceiros/animais: ${checksMarcados("agressao_terceiros")}</p>
+  <p>16.1 Meio utilizado: ${opcaoRadio("meio","ARMA DE FOGO","Arma de fogo")} ${opcaoRadio("meio","ARMA BRANCA","Arma branca")} ${opcaoRadio("meio","FALA","Fala")} ${opcaoRadio("meio","OUTRO","Outro meio")} ${linha("meio_outro")}</p>
+  </div>
+
+  <div class="secao">
+  <h2>Bloco III - Sobre você</h2>
+  <p>17. Separou recentemente ou manifestou intenção de separar? ${opcaoRadio("separacao_recente","SIM","Sim")} ${opcaoRadio("separacao_recente","NAO","Não")}</p>
+  <p>18. Filhos: ${radioMarcado("filhos_vitima")} | Com agressor: ${linha("filhos_agressor_qtd")} | De outro relacionamento: ${linha("filhos_outros_qtd")}</p>
+  <p>19. Algum filho é PCD? ${opcaoRadio("filho_deficiencia","SIM","Sim")} ${opcaoRadio("filho_deficiencia","NAO","Não")} ${opcaoRadio("filho_deficiencia","NAO TEM FILHOS","Não tenho filhos")}</p>
+  <p>20. Conflito sobre guarda/visitas/pensão? ${opcaoRadio("guarda","SIM","Sim")} ${opcaoRadio("guarda","NAO","Não")} ${opcaoRadio("guarda","NAO TEM FILHOS COM AGRESSOR","Não tenho filhos com agressor(a)")}</p>
+  <p>21. Filhos presenciaram violência? ${opcaoRadio("presenciaram","SIM","Sim")} ${opcaoRadio("presenciaram","NAO","Não")} ${opcaoRadio("presenciaram","NAO TEM FILHOS","Não tenho filhos")}</p>
+  <p>22. Violência na gravidez/pós-parto? ${opcaoRadio("violencia_gravidez","SIM","Sim")} ${opcaoRadio("violencia_gravidez","NAO","Não")} ${opcaoRadio("violencia_gravidez","NAO TEM FILHOS","Não tenho filhos")}</p>
+  <p>23. Está grávida ou teve bebê nos últimos 18 meses? ${opcaoRadio("gravidez_recente","SIM","Sim")} ${opcaoRadio("gravidez_recente","NAO","Não")}</p>
+  <p>24. Acompanhamento psicológico: ${opcaoRadio("psicologico_vitima","SIM","Sim")} ${opcaoRadio("psicologico_vitima","NAO","Não")} | Órgão: ${linha("orgao_psicologico")}</p>
+  <p>25. Reside com agressor/acesso à residência: ${radioMarcado("residencia")}</p>
+  <p>26. Possui local seguro? ${radioMarcado("local_seguro")} | Outro: ${linha("local_seguro_outro")}</p>
+  </div>
+
+  <div class="secao">
+  <h2>Bloco IV - Outras Informações Importantes</h2>
+  <p>27. Mora em local de risco? ${opcaoRadio("area_risco","SIM","Sim")} ${opcaoRadio("area_risco","NAO","Não")} ${opcaoRadio("area_risco","NAO SABE","Não sei")}</p>
+  <p>28. Situação de moradia: ${radioMarcado("moradia")} | Cedida por: ${linha("moradia_detalhe")}</p>
+  <p>29. Dependência financeira do agressor? ${opcaoRadio("dependencia","SIM","Sim")} ${opcaoRadio("dependencia","NAO","Não")}</p>
+  <p>30. Aceita abrigamento temporário? ${opcaoRadio("abrigamento","SIM","Sim")} ${opcaoRadio("abrigamento","NAO","Não")}</p>
+  <p>31. Após último BO houve nova violência? ${opcaoRadio("reincidencia","SIM","Sim")} ${opcaoRadio("reincidencia","NAO","Não")}</p>
+  </div>
+
+  <div class="declaracao">
+  </div>
+
+  <div class="topico-final">
+    <p><strong>PARA PREENCHIMENTO PELO POLICIAL MILITAR:</strong></p>
+    <p>${opcaoRadio("preenchimento_pm","SEM AJUDA","Vítima respondeu sem ajuda profissional")}</p>
+    <p>${opcaoRadio("preenchimento_pm","COM AUXILIO","Vítima respondeu com auxílio profissional")}</p>
+    <p>${opcaoRadio("preenchimento_pm","NAO CONSEGUIU","Vítima não teve condições de responder")}</p>
+    <p>${opcaoRadio("preenchimento_pm","RECUSOU","Vítima recusou-se a preencher")}</p>
+    <p>${opcaoRadio("preenchimento_pm","TERCEIRO","Terceiro comunicante respondeu")}</p>
+  </div>
+
+  <div class="topico-final">
+    <p><strong>CONCLUSÃO:</strong> Grau de risco: ${opcaoRadio("grau_risco","MEDIO","Médio")} ${opcaoRadio("grau_risco","ALTO","Alto")} ${opcaoRadio("grau_risco","EXTREMO","Extremo")}</p>
+  </div>
+
+  <div class="topico-final">
+    <p><strong>Observações:</strong> ${linha("observacoes")}</p>
+  </div>
+</body>
+</html>`;
+
+  tela.document.open();
+  tela.document.write(html);
+  tela.document.close();
+  tela.focus();
+  setTimeout(() => tela.print(), 500);
+}
+
+// EVENTOS
+document.getElementById("btnEnviar").addEventListener("click", enviarFormulario);
+document.getElementById("btnCopiar").addEventListener("click", copiarHistorico);
+document.getElementById("btnPDF").addEventListener("click", gerarPDF);
+
+aplicarMascara("tel1_vitima", mascararTelefone);
+aplicarMascara("tel2_vitima", mascararTelefone);
+aplicarMascara("tel1_autor", mascararTelefone);
+aplicarMascara("tel2_autor", mascararTelefone);
+aplicarMascara("cpf_vitima", mascararCPF);
+aplicarMascara("cpf_autor", mascararCPF);
+
+</script>
